@@ -23,7 +23,7 @@
   <body>
     <div class="title">Unix Toolbox</div>
     <div class="abstract">
-      Esse documento é uma coleção de comandos Unix/Linux/BSD e de tarefas que são úteis para trabalho em TI ou usuários avançados. Esse é um guia prático com explicações concisas, embora o leitor deve saber o que está fazendo.<br /><br />
+      Este documento é uma coleção de comandos Unix/Linux/BSD e de tarefas que são úteis para trabalho em TI ou usuários avançados. Esse é um guia prático com explicações concisas, embora o leitor deve saber o que está fazendo.<br /><br />
     </div>
     <div class="footerfirst">
       Unix Toolbox revisão 14.4<br />
@@ -75,11 +75,11 @@
     </pre>
     Utilize /etc/<code>DISTR</code>-release com <code>DISTR=</code> lsb (Ubuntu), redhat, gentoo, mandrake, sun (Solaris), e assim por diante. veja também <code>/etc/issue</code>.
     <pre>
-    # uptime                             <span class="cmt"># Exibir a quanto tempo o sistema está rodando + carga</span>
-    # hostname                           <span class="cmt"># Host name do sistema</span>
-    # hostname -i                        <span class="cmt"># Exibir o endereço de IP do host. (somente para Linux)</span>
+    # uptime                             <span class="cmt"># Exibe há quanto tempo o sistema está em execução + carga</span>
+    # hostname                           <span class="cmt"># Host name (nome do hospedeiro) do sistema</span>
+    # hostname -i                        <span class="cmt"># Exibe o endereço de IP do host. (somente para Linux)</span>
     # man hier                           <span class="cmt"># Descrição da hierarquia do sistema de arquivo</span>
-    # last reboot                        <span class="cmt"># Exibir histórico de reboot do sistema</span>
+    # last reboot                        <span class="cmt"># Exibe o histórico de reboot (reinicialização) do sistema</span>
     </pre>
     <h2 id="hardwareinfo">Informações de Hardware</h2>
     Hardware detectado pelo kernel
@@ -91,28 +91,28 @@
     <pre>
     # cat /proc/cpuinfo                  <span class="cmt"># Modelo do CPU</span>
     # cat /proc/meminfo                  <span class="cmt"># Memória do Hardware</span>
-    # grep MemTotal /proc/meminfo        <span class="cmt"># Exibir a memória física</span>
+    # grep MemTotal /proc/meminfo        <span class="cmt"># Exibe a quantidade total de memória RAM</span>
     # watch -n1 'cat /proc/interrupts'   <span class="cmt"># Observar interrupções alteráveis continuadamente</span>
     # free -m                            <span class="cmt"># Memória utilizada e livre (-m para MB)</span>
     # cat /proc/devices                  <span class="cmt"># Dispositivos configurados</span>
-    # lspci -tv                          <span class="cmt"># Exibir dispositivos PCI</span>
-    # lsusb -tv                          <span class="cmt"># Exibir dispositivos USB</span>
-    # lshal                              <span class="cmt"># Exibir uma lista de todos os dispositivos com suas propriedades</span>
-    # dmidecode                          <span class="cmt"># Exibir DMI/SMBIOS: hw info da BIOS</span>
+    # lspci -tv                          <span class="cmt"># Exibe dispositivos PCI</span>
+    # lsusb -tv                          <span class="cmt"># Exibe dispositivos USB</span>
+    # lshal                              <span class="cmt"># Exibe uma lista de todos os dispositivos com suas propriedades</span>
+    # dmidecode                          <span class="cmt"># Exibe DMI/SMBIOS: hw info da BIOS</span>
     </pre>
     <h3>FreeBSD</h3>
     <pre>
     # sysctl hw.model                    <span class="cmt"># Modelo do CPU</span>
-    # sysctl hw                          <span class="cmt"># Dá um monte de informações de hardware</span>
+    # sysctl hw                          <span class="cmt"># Um monte de informações de hardware</span>
     # sysctl hw.ncpu                     <span class="cmt"># Número de CPUs ativos instalados</span>
     # sysctl vm                          <span class="cmt"># Uso de memória</span>
     # sysctl hw.realmem                  <span class="cmt"># Memória do hardware</span>
     # sysctl -a | grep mem               <span class="cmt"># Configurações de memória do kernel e informações</span>
     # sysctl dev                         <span class="cmt"># Dispositivos Configurados</span>
-    # pciconf -l -cv                     <span class="cmt"># Exibir dispositivos PCI</span>
-    # usbdevs -v                         <span class="cmt"># Exibir dispositivos USB</span>
-    # atacontrol list                    <span class="cmt"># Exibir dispositivos ATA</span>
-    # camcontrol devlist -v              <span class="cmt"># Exibir dispositivos SCSI</span>
+    # pciconf -l -cv                     <span class="cmt"># Exibe dispositivos PCI</span>
+    # usbdevs -v                         <span class="cmt"># Exibe dispositivos USB</span>
+    # atacontrol list                    <span class="cmt"># Exibe dispositivos ATA</span>
+    # camcontrol devlist -v              <span class="cmt"># Exibe dispositivos SCSI</span>
     </pre>
     <h2 id="loadstats">Carga, estatísticas e mensagens</h2>
     Os comandos a seguir são úteis para descobrir o que está acontecendo no sistema.
