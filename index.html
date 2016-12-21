@@ -212,7 +212,7 @@
 
     <h2 id="runlevels">Runlevels (níveis de execução)</h2>
     <h3>Linux</h3>
-    Uma vez inicializado, o kernel inicia o <code>init</code> o qual então inicia <code>rc</code> o qual inicia todos os scripts pertencentes a um runlevel. Os scripts são armazenados em /etc/init.d e são linkados dentro de /etc/rc.d/rcN.d com N número do runlevel.<br />
+    Uma vez inicializado, o kernel inicia o <code>init</code> o qual então inicia <code>rc</code> o qual inicia todos os scripts pertencentes a um runlevel. Os scripts são armazenados em /etc/init.d e são lincados dentro de /etc/rc.d/rcN.d com N número do runlevel.<br />
     O runlevel padrão está configurado em /etc/inittab. É normalmente o 3 ou o 5:
     <pre># grep default: /etc/inittab
     id:3:initdefault:
@@ -599,7 +599,7 @@
     <pre># mount -o remount,ro /              <span class="cmt"># Linux</span>
     # mount -o ro -u /                   <span class="cmt"># FreeBSD</span>
     </pre>
-    Cópiar o arquivo  bruto a partir de um cdrom dentro de uma imagem ISO (tamanho de blocos padrão de 512  podem causar problemas):
+    Copiar o arquivo  bruto a partir de um cdrom dentro de uma imagem ISO (tamanho de blocos padrão de 512  podem causar problemas):
     <pre># dd if=/dev/cd0c of=file.iso bs=2048</pre>
     <h3 id="virtualbox">Virtualbox</h3>
     Permite um compartilhamento no host:
@@ -791,7 +791,7 @@
     # ping cb.vu                <span class="cmt"># A primeira coisa a testar...</span>
     # traceroute cb.vu          <span class="cmt"># Imprime o caminho do roteador para o destino</span>
     # ifconfig fxp0 media 100baseTX mediaopt full-duplex <span class="cmt"># 100 Mbit full duplex (FreeBSD)</span>
-    # netstat -s                <span class="cmt"># Estatisticas do System-wide para cada protocolo de rede</span>
+    # netstat -s                <span class="cmt"># Estatísticas do System-wide para cada protocolo de rede</span>
     </pre>
     Comandos adicionais que não são sempre instalados por padrão, mas fáceis de encontrar:
     <pre># arping 192.168.16.254     <span class="cmt"># Ping na camada Ethernet</span>
