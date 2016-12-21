@@ -599,7 +599,7 @@
     <pre># mount -o remount,ro /              <span class="cmt"># Linux</span>
     # mount -o ro -u /                   <span class="cmt"># FreeBSD</span>
     </pre>
-    Copiar o arquivo  bruto a partir de um cdrom dentro de uma imagem ISO (tamanho de blocos padrão de 512  podem causar problemas):
+    Copia o arquivo  bruto a partir de um cdrom dentro de uma imagem ISO (tamanho de blocos padrão de 512  podem causar problemas):
     <pre># dd if=/dev/cd0c of=file.iso bs=2048</pre>
     <h3 id="virtualbox">Virtualbox</h3>
     Permite um compartilhamento no host:
@@ -672,7 +672,7 @@
     # umount /mnt; lofiadm -d /dev/lofi/1                   <span class="cmt"># Limpa o dispositivo lofi</span>
     </pre>
     <h2 id="burniso">Criar e queimar uma imagem ISO</h2>
-    Isso copiar o cd ou DVD setor por setor. Sem <code>conv=notrunc</code>, a imagem será pequena se há menos conteúdo no cd. Veja abaixo os <a class="xref" href="http://cb.vu/unixtoolbox.xhtml#dd">exemplos dd</a>.
+    Isso copia o cd ou DVD setor por setor. Sem <code>conv=notrunc</code>, a imagem será pequena se há menos conteúdo no cd. Veja abaixo os <a class="xref" href="http://cb.vu/unixtoolbox.xhtml#dd">exemplos dd</a>.
     <pre># dd if=/dev/hdc of=/tmp/mycd.iso bs=2048 conv=notrunc</pre>
     Utilize mkisofs para criar uma imagem de CD/DVD image a partir de um diretório. Para superar as restrições de nomes de arquivos: -r habilita as extensões comuns Rock Ridge para sistemas UNIX, -J habilita extenções  Joliet utilizada pelos sistemas Microsoft. -L permite nomes de arquivos ISO9660 iniciar com um período.
     <pre># mkisofs -J -L -r -V TITLE -o imagefile.iso /path/to/dir
@@ -1158,7 +1158,7 @@
     <a rel="nofollow" href="http://netcat.sourceforge.net/">Netcat</a><span class="fn">http://netcat.sourceforge.net</span> (nc) é melhor conhecido como o "Canivete Suíço de Rede", ele pode manipular, criar ou ler/escrever conexões TCP/IP. Aqui alguns exemplos úteis, há muitos mais na net, por exemplo <a rel="nofollow" href="http://www.g-loaded.eu/2006/11/06/netcat-a-couple-of-useful-examples">g-loaded.eu[...]</a><span class="fn">http://www.g-loaded.eu/2006/11/06/netcat-a-couple-of-useful-examples</span> e <a rel="nofollow" href="http://www.terminally-incoherent.com/blog/2007/08/07/few-useful-netcat-tricks">aqui</a><span class="fn">http://www.terminally-incoherent.com/blog/2007/08/07/few-useful-netcat-tricks</span>.<br /> Você pode precisar usar o comando <code>netcat</code> ao inves do <code>nc</code>. Veja também o comando similar <a rel="nofollow" href="http://www.dest-unreach.org/socat">socat</a>.
 
     <h3>Transferência de arquivo</h3>
-    Cópia um diretório grande através de uma conexão tcp bruta. A transferência é bem rápida (sem sobrecarga de protocolo) e você não precisa  bagunçar com NFS ou SMB ou FTP ou outros, simplesmente torne o arquivo disponível no servidor, e ser obtido a partir do cliente. Aqui 192.168.1.1 é o endereço de Ip do servidor.
+    Copia um diretório grande através de uma conexão tcp bruta. A transferência é bem rápida (sem sobrecarga de protocolo) e você não precisa  bagunçar com NFS ou SMB ou FTP ou outros, simplesmente torne o arquivo disponível no servidor, e ser obtido a partir do cliente. Aqui 192.168.1.1 é o endereço de Ip do servidor.
     <pre><span class="cmt">server#</span> tar -cf - -C VIDEO_TS . | nc -l -p 4444         <span class="cmt"># Serve o arquivo tar na porta 4444</span>
     <span class="cmt">client#</span> nc 192.168.1.1 4444 | tar xpf - -C VIDEO_TS     <span class="cmt"># Puxa o arquivo na porta 4444</span>
     <span class="cmt">server#</span> cat largefile | nc -l 5678                      <span class="cmt"># Serve um único arquivo</span>
@@ -1412,15 +1412,15 @@
 
     <div id="rsync"><h1><a>RSYNC</a></h1>
     Rsync pode quase substituir completamente o cp e o scp, além disso transferências interruptas são reiniciadas eficientemente. Uma barra invertida (e mesmo a ausência) tem sentidos diferentes, a man page é boa... aqui alguns exemplos:<br />
-    Cópia os diretórios com conteúdo completo:
+    Copia os diretórios com conteúdo completo:
     <pre># rsync -a /home/colin/ /backup/colin/                <span class="cmt"># "archive" mode. ex. mantém o mesmo</span>
     # rsync -a /var/ /var_bak/
     # rsync -aR --delete-during /home/user/ /backup/      <span class="cmt"># usa relativo (veja abaixo)</span>
     # /opt/local/bin/rsync -azv --iconv=UTF-8-MAC,UTF-8 ~/Music/flac/ me@server:/dst/
                                <span class="cmt"># converte nomes de arquivos (filenames) UTF8 do OSX para UTF8 do Windows</span>
     </pre>
-    O mesmo que o anterior, mas na rede e com compressão. Rsync utiliza SSH para o transporte por padrão e utilizará a chave ssh se elas forem definidas. Utilize ":" da mesma forma que no SCP. Uma copia remota típica:
-    <pre># rsync -axSRzv /home/user/ user@server:/backup/user/ <span class="cmt"># Cópia para um lugar remoto</span>
+    O mesmo que o anterior, mas na rede e com compressão. Rsync utiliza SSH para o transporte por padrão e utilizará a chave ssh se elas forem definidas. Utilize ":" da mesma forma que no SCP. Uma cópia remota típica:
+    <pre># rsync -axSRzv /home/user/ user@server:/backup/user/ <span class="cmt"># Copia para um lugar remoto</span>
     # rsync -a 'user@server:My\ Documents' My\ Documents  <span class="cmt"># Quote AND escape spaces para o shell remoto</span></pre>
     Exclui qualquer diretório tmp dentro de /home/user/ e mantém a hierarquia de pastas (diretórios) relativa, que é o diretório remoto terá a estrutura /backup/home/user/. Isso é tipicamente utilizado para backups.
     <pre># rsync -azR --exclude=tmp/ /home/user/ user@server:/backup/</pre>
@@ -1453,7 +1453,7 @@
     # rsync user@server:.ssh/authorized_keys2 . <span class="cmt"># Copie o arquivo localmente a partir do servidor</span>
     # cat id_dsa.pub &gt;&gt; authorized_keys2        <span class="cmt"># Ou utilize um editor para adicionar a chave</span>
     # rsync authorized_keys2 user@server:.ssh/  <span class="cmt"># Copie o arquivo de volta para o servidor</span>
-    # del authorized_keys2                      <span class="cmt"># Remova a copia local</span>
+    # del authorized_keys2                      <span class="cmt"># Remova a cópia local</span>
     </pre>
     Agora teste com (em uma linha):
     <pre>rsync -rv "/cygdrive/c/Documents and Settings/%USERNAME%/My Documents/" \
@@ -2032,7 +2032,7 @@
       <li><strong>G</strong>       Move para a ultima ultima linha do arquivo</li>
       <li><strong>:%s/OLD/NEW/g</strong>       Busca e substitui toda a ocorrência</li>
     </ul>
-    <h3>Excluir, copiar e colar text</h3>
+    <h3>Excluir, copiar e colar texto</h3>
     <ul style="list-style-type: none;">
       <li><strong>dd (dw)</strong>       Corta linha corrente (palavra)</li>
       <li><strong>D</strong>       Cut to the end of the line</li>
@@ -2082,8 +2082,8 @@
     <h3>Mais avançado</h3>
     <pre># tar c dir/ | gzip | ssh user@remote 'dd of=dir.tgz' <span class="cmt"># arquiva o dir/ e armazena remotamente.</span>
     # tar cvf - `find . -print` &gt; backup.tar              <span class="cmt"># arquiva o diretório atual.</span>
-    # tar -cf - -C /etc . | tar xpf - -C /backup/etc      <span class="cmt"># Cópia diretórios</span>
-    # tar -cf - -C /etc . | ssh user@remote tar xpf - -C /backup/etc      <span class="cmt"># Cópia remota.</span>
+    # tar -cf - -C /etc . | tar xpf - -C /backup/etc      <span class="cmt"># Copia diretórios</span>
+    # tar -cf - -C /etc . | ssh user@remote tar xpf - -C /backup/etc      <span class="cmt"># Copia remota.</span>
     # tar -czf home.tgz --exclude '*.o' --exclude 'tmp/' home/
     </pre>
     <h2 id="zip">zip/unzip</h2>
@@ -2108,7 +2108,7 @@
     </ul>
     O tamanho de byte padrão é de 512 (um bloco). O MBR, aonde a tabela de partição fica localizada, fica no primeiro bloco, os primeiros 63 blocos de um disco ficam vazios. Tamanhos maiores de byte são mais rápidos para copiar mas requer também mais memória.
     <h3>Backup e restaurção</h3>
-    <pre># dd if=/dev/hda of=/dev/hdc bs=16065b                <span class="cmt"># Cópia de disco para disco (do mesmo tamanho)</span>
+    <pre># dd if=/dev/hda of=/dev/hdc bs=16065b                <span class="cmt"># Copia de disco para disco (do mesmo tamanho)</span>
     # dd if=/dev/sda7 of=/home/root.img bs=4096 conv=notrunc,noerror <span class="cmt"># Realiza backup do /</span>
     # dd if=/home/root.img of=/dev/sda7 bs=4096 conv=notrunc,noerror <span class="cmt"># Restaura o /</span>
     # dd bs=1M if=/dev/ad4s3e | gzip -c &gt; ad4s3e.gz                  <span class="cmt"># Zipa o backup</span>
@@ -2118,7 +2118,7 @@
     # dd if=/dev/ad0 of=/dev/ad2 skip=1 seek=1 bs=4k conv=noerror    <span class="cmt"># Pula o MBR</span>
         <span class="cmt"># Isso é necessário se o destino (ad2) for menor.</span>
     # dd if=/vm/FreeBSD-8.2-RELEASE-amd64-memstick.img of=/dev/disk1 bs=10240 conv=sync
-        <span class="cmt"># Cópia a imagem do FreeBSD para o pendrive (USB memory stick)</span>
+        <span class="cmt"># Copia a imagem do FreeBSD para o pendrive (USB memory stick)</span>
     </pre>
 
     <h3>Recuperar</h3>
@@ -2129,7 +2129,7 @@
     root@fry 'dd of=hda1.gz bs=1k'
     # dd bs=1k if=/dev/hda1 conv=sync,noerror,notrunc of=hda1.img    <span class="cmt"># Armazena dentro de uma imagem</span>
     # mount -o loop /hda1.img /mnt                        <span class="cmt"># <a class="xref" href="http://cb.vu/unixtoolbox.xhtml#createimg">Monta a imagem</a></span>
-    # rsync -ax /mnt/ /newdisk/                           <span class="cmt"># Cópia em um novo disco</span>
+    # rsync -ax /mnt/ /newdisk/                           <span class="cmt"># Copia em um novo disco</span>
     # dd if=/dev/hda of=/dev/hda                          <span class="cmt"># Atualizar o estado magnético (apagará todo o disco)</span>
       <span class="cmt"># A opção acima é util para atualizar o disco. É perfeitamente seguro, mas deve ser desmontado.</span>
     </pre>
@@ -2397,9 +2397,9 @@
     </pre>
     Veja <a href="http://sox.sourceforge.net/">sox</a> para processamento de som.
 
-    <h2>Cópia um cd de áudio</h2>
+    <h2>Copia um cd de áudio</h2>
     o programa <a rel="nofollow" href="http://xiph.org/paranoia/"><code>cdparanoia</code></a><span class="fn">http://xiph.org/paranoia/</span> pode salvar as faixas de  áudio (FreeBSD port em audio/cdparanoia/), <code>oggenc</code> pode codificar em formato Ogg Vorbis format, <code>lame</code> converte para mp3.
-    <pre># cdparanoia -B                      <span class="cmt"># Cópia as faixas para arquivos wav no diretório atual</span>
+    <pre># cdparanoia -B                      <span class="cmt"># Copia as faixas para arquivos wav no diretório atual</span>
     # lame -b 256 in.wav out.mp3         <span class="cmt"># Codifica em mp3 256 kb/s</span>
     # for i in *.wav; do lame -b 256 $i `basename $i .wav`.mp3; done
     # oggenc in.wav -b 256 out.ogg       <span class="cmt"># Codifica em Ogg Vorbis 256 kb/s</span>
@@ -2410,7 +2410,7 @@
     <h2>Imprimir com o lpr</h2>
     <pre style="page-break-inside:avoid;"># lpr unixtoolbox.ps                 <span class="cmt"># Imprime na impressora padrão</span>
     # export PRINTER=hp4600              <span class="cmt"># Altera a impressora padrão</span>
-    # lpr -Php4500 #2 unixtoolbox.ps     <span class="cmt"># Utiliza a impressora hp4500 e imprime 2 copias</span>
+    # lpr -Php4500 #2 unixtoolbox.ps     <span class="cmt"># Utiliza a impressora hp4500 e imprime 2 cópias</span>
     # lpr -o Duplex=DuplexNoTumble ...   <span class="cmt"># Imprime duplex em long side</span>
     # lpr -o PageSize=A4,Duplex=DuplexNoTumble ...
     </pre>
